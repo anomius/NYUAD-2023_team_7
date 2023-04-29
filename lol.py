@@ -59,21 +59,21 @@ class PlantOpp:
         return l_coff
                 
     def find_quad_coffent(self):
-        quad={}
+        quad=[[0 for k in range(self.I*self.J*self.K)] for i in range(self.I*self.J*self.K)]
         k=1
         for i in range(self.I):
             for j in range(self.J):
                 for Q_i in range(self.I):
                     for Q_j in range(self.J):
                         Q_k=0
-                        quad[((((i*I)+j)*J)+k),((((i*Q_i)+j)*Q_j)+k)]=self.area[j]*self.yeild[j]*self.price[i][k]*self.impactFactor[Q_i]
+                        quad[int((((i*I)+j)*J)+k)][int((((i*Q_i)+j)*Q_j)+k)]+=self.area[j]*self.yeild[j]*self.price[i][k]*self.impactFactor[Q_i]
         
         # fertizer loss
         for i in range(self.I):
             for j in range(self.J):
                 for Q_i in range(self.I):
                     for Q_j in range(self.J):
-                        quad[((((i*I)+j)*J)+k),((((i*Q_i)+j)*Q_j)+k)]-=((self.fertizer_need[i]*self.fertilizer_price)/(self.soil[j]*self.yeild[j]*self.impactFactor[Q_i]))
+                        quad[int((((i*I)+j)*J)+k)][int((((i*Q_i)+j)*Q_j)+k)]-=((self.fertizer_need[i]*self.fertilizer_price)/(self.soil[j]*self.yeild[j]*self.impactFactor[Q_i]))
         
         return quad
 
