@@ -15,7 +15,7 @@ Enviorment = 0.1
 #i -> plant
 #j -> plot
 #k -> time
-I,J,K=2,2,2
+I,J,K=3,3,2
 
 class PlantOpp:
     def __init__(self,area,yeild,soil,price,fertizer_need,impactFactor,fertilizer_price,Enviorment,I,J,K):
@@ -85,8 +85,22 @@ class PlantOpp:
                 for i in range(self.I):
                     l[((((i*I)+j)*J)+k)] = 1
                 print(l)
-                constraints.append([l,[1.0,"<="]])
+                constraints.append([l,[1.0,"=="]])
         return constraints
+    
+    def plot_graph(self,res):
+        # reverse l_coff[(((i*I)+j)*J)+k]=liner[i][j][k]
+        # np.reshape(res.values(),(self.I,self.J,self.K))
+        return np.reshape(list(res.values()),(self.I,self.J,self.K))
+
+    def good_print(self,res):
+        l=self.plot_graph(res)
+        for i in range(len(l)):
+            for j in range(len(l[0])):
+                for k in range(len(l[0][0])):
+                    if l[i][j][k]==1:
+                        print("plant {} in plot {} at time {}".format(i,j,k))
+            
                 
 
             
