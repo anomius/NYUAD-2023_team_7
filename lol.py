@@ -1,3 +1,4 @@
+import numpy as np
 #plot
 area=[1,2,3]
 yeild=[0.1,0.2,0.3]
@@ -32,13 +33,15 @@ class PlantOpp:
         self.K=K
     
     def find_liner_coffecent(self):
-        liner=[[[0 for i in range(self.I+1)] for j in range(self.J+1)] for k in range(self.K+1)]
+        liner=np.zeros((self.I,self.J,self.K))
+        print(liner)
         #find the coffecent of the liner equation
         #financial benifit at k=0
         k=0
         for i in range(self.I):
             for j in range(self.J):
-                    liner[i][j][k]=self.area[j]*self.yeild[j]*self.price[i][k]
+                    liner[i][j][k]+=self.area[j]*self.yeild[j]*self.price[i][k]
+                    print(liner)
         
         #enviormental benifit
         for i in range(self.I):
@@ -51,29 +54,26 @@ class PlantOpp:
             for j in range(self.J):
                 for k in range(self.K):
                     liner[i][j][k]-=(self.fertizer_need[i]*self.fertilizer_price)/(self.soil[j]*self.yeild[j])
-        l_coff=[0 for i in range(self.I*self.J*self.K)]
-        for i in range(self.I):
-            for j in range(self.J):
-                for k in range(self.K):
-                    l_coff[(((i*I)+j)*J)+k]=liner[i][j][k]
-        return l_coff
+        print(liner)
+        #np.reshape(liner,(I*J*K))
+        return np.reshape(liner,(I*J*K))
                 
     def find_quad_coffent(self):
-        quad=[[0 for k in range(self.I*self.J*self.K)] for i in range(self.I*self.J*self.K)]
+        quad=np.zeros((self.I,self.J,self.K,self.I,self.J,self.K))
         k=1
         for i in range(self.I):
             for j in range(self.J):
                 for Q_i in range(self.I):
                     for Q_j in range(self.J):
                         Q_k=0
-                        quad[int((((i*I)+j)*J)+k)][int((((i*Q_i)+j)*Q_j)+k)]+=self.area[j]*self.yeild[j]*self.price[i][k]*self.impactFactor[Q_i]
+                        quad[i,j,k,Q_i,Q_j,Q_k]+=self.area[j]*self.yeild[j]*self.price[i][k]*self.impactFactor[Q_i]
         
         # fertizer loss
         for i in range(self.I):
             for j in range(self.J):
                 for Q_i in range(self.I):
                     for Q_j in range(self.J):
-                        quad[int((((i*I)+j)*J)+k)][int((((i*Q_i)+j)*Q_j)+k)]-=((self.fertizer_need[i]*self.fertilizer_price)/(self.soil[j]*self.yeild[j]*self.impactFactor[Q_i]))
+                        quad[i,j,k,Q_i,Q_j,Q_k]-=((self.fertizer_need[i]*self.fertilizer_price)/(self.soil[j]*self.yeild[j]*self.impactFactor[Q_i]))
         
         return quad
 
@@ -81,11 +81,11 @@ class PlantOpp:
         constraints=[]
         for j in range(self.J):
             for k in range(self.K):
-                l=[0 for i in range(self.I*self.J*self.K)]  
+                l=np.zeros((self.I,self.J,self.K)) 
                 for i in range(self.I):
-                    l[((((i*I)+j)*J)+k)] = 1
-                print(l)
-                constraints.append([l,[1.0,"=="]])
+                    l[i][j][k] = 1
+                print(np.reshape(l,(I*J*K)))
+                constraints.append([np.reshape(l,(I*J*K)),[1.0,"=="]])
         return constraints
     
     def plot_graph(self,res):
