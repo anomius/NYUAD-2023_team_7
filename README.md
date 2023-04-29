@@ -1,5 +1,5 @@
 [<img src="https://qbraid-static.s3.amazonaws.com/logos/Launch_on_qBraid_white.png" width="150">](https://account.qbraid.com?gitHubUrl=https://github.com/qBraid/NYUAD-2023.git)
-
+# AqriCult
 # NYUAD Hackathon for Social Good in the Arab World: Focusing on Quantum Computing (QC)
 
 https://nyuad.nyu.edu/en/events/2022/march/nyuad-hackathon-event.html
