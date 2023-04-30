@@ -1,7 +1,8 @@
-[<img src="https://qbraid-static.s3.amazonaws.com/logos/Launch_on_qBraid_white.png" width="150">](https://account.qbraid.com?gitHubUrl=https://github.com/qBraid/NYUAD-2023.git)
 ![United Nations' SDG goals 2](./img/sdg-zero-hunger.png)
 ![United Nations' SDG goals 12](./img/sdg-responsible-consumption-and-production.png)
 ![United Nations' SDG goals 13](./img/sdg-climate-action.png)
+
+[<img src="https://qbraid-static.s3.amazonaws.com/logos/Launch_on_qBraid_white.png" width="150">](https://account.qbraid.com?gitHubUrl=https://github.com/qBraid/NYUAD-2023.git)
 # AqriCult
 
 ## Overview 
@@ -33,8 +34,9 @@ where:
 
 ![Cost funciton](./img/eq.png)
 
-### Technologies
-We gather information from [investing.com/commodities](investing.com/commodities) and based on that data we have trained an ARIMA (Autoregressive Integrated Moving Average) model to predict the prices of the crop which is used.
+The problem is then binary encoded in a QUBO model which maximizes the cost function and is feeded into a QAOA afterwards which is run on IBM's hardware. 
+
+We gather information from [investing.com/commodities](investing.com/commodities) and based on that data we have trained an ARIMA (Autoregressive Integrated Moving Average) model to predict the prices of the crops, and use this as an additional parameter.
 
 ## Setup
 You can launch the project on [qBraid](qbraid.com) with the button in the beginning of this file. 
