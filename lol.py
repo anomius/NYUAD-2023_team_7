@@ -75,7 +75,7 @@ class PlantOpp:
                     for Q_j in range(self.J):
                         quad[i,j,k,Q_i,Q_j,Q_k]-=((self.fertizer_need[i]*self.fertilizer_price)/(self.soil[j]*self.yeild[j]*self.impactFactor[Q_i]))
         
-        return quad
+        return np.reshape(quad,(I*J*K,I*J*K))
 
     def create_constraints(self):
         constraints=[]
@@ -94,16 +94,17 @@ class PlantOpp:
         return np.reshape(list(res.values()),(self.I,self.J,self.K))
 
     def good_print(self,res):
+        dic={}
         l=self.plot_graph(res)
         for i in range(len(l)):
             for j in range(len(l[0])):
                 for k in range(len(l[0][0])):
                     if l[i][j][k]==1:
                         print("plant {} in plot {} at time {}".format(i,j,k))
-            
                 
-
-            
+        return l
+                        
+        
 f=PlantOpp(area,yeild,soil,price,fertizer_need,impactFactor,fertilizer_price,Enviorment,I,J,K)
 print(f.find_liner_coffecent())
 print(f.find_quad_coffent()) 
