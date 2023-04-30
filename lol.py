@@ -94,7 +94,6 @@ class PlantOpp:
         return np.reshape(list(res.values()),(self.I,self.J,self.K))
 
     def good_print(self,res):
-        dic={}
         l=self.plot_graph(res)
         for i in range(len(l)):
             for j in range(len(l[0])):
