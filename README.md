@@ -3,12 +3,12 @@
 ![United Nations' SDG goals 13](./img/sdg-climate-action.png)
 
 [<img src="https://qbraid-static.s3.amazonaws.com/logos/Launch_on_qBraid_white.png" width="150">](https://account.qbraid.com?gitHubUrl=https://github.com/qBraid/NYUAD-2023.git)
-# AqriCult
+# NaQa
 
 ## Overview 
 Welocome to our project developed for the NYUAD Quantum Computing Hackathon for Social Good!
 
-AqriCult is a crop rotation quantum optimizer targeting specifically UAE's agriculture. Crop rotation is the practice of planting different crops sequentially on the same plot of land in order to improve soil health, optimize nutrients in the soil, and combat pest and weed pressure. The algorithm makes predictions on optimal distribution of several crops that a argriculturist has chosen to plant for a given amount of years or seasons.
+NaQa is a crop rotation quantum optimizer targeting specifically UAE's agriculture. Crop rotation is the practice of planting different crops sequentially on the same plot of land in order to improve soil health, optimize nutrients in the soil, and combat pest and weed pressure. The algorithm makes predictions on optimal distribution of several crops that a argriculturist has chosen to plant for a given amount of years or seasons.
 
 When it comes to the quantum advantage of our solution against the many available AI solutions in the market, AqriCult can work on a bigger scale and in a greater detail which can be implemented in cases such as government planning or industrial-size plantations.
 
