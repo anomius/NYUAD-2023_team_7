@@ -1,4 +1,7 @@
 [<img src="https://qbraid-static.s3.amazonaws.com/logos/Launch_on_qBraid_white.png" width="150">](https://account.qbraid.com?gitHubUrl=https://github.com/qBraid/NYUAD-2023.git)
+![United Nations' SDG goals 2](./img/sdg-zero-hunger.png)
+![United Nations' SDG goals 12](./img/sdg-responsible-consumption-and-production.png)
+![United Nations' SDG goals 13](./img/sdg-climate-action.png)
 # AqriCult
 
 ## Overview 
@@ -8,7 +11,7 @@ AqriCult is a crop rotation quantum optimizer targeting specifically UAE's agric
 
 When it comes to the quantum advantage of our solution against the many available AI solutions in the market, AqriCult can work on a bigger scale and in a greater detail which can be implemented in cases such as government planning or industrial-size plantations.
 
-AqriCult bases its predictions on market demand and predicted financial gains, soil quality, and environment factors, aiming revenue maximuzation and better use of the land, higher food satisfaction, and gaining ecological benefits. The market demand is evaluated using an ML model we have developed during the hackathon which makes predictions on the price of the crop which is chosen.
+AqriCult bases its predictions on market demand and predicted financial gains, soil quality, and environment factors, aiming better use of the land, higher food satisfaction, and positive impact on the nature, while maximizing farmers' revenue. The market demand is evaluated using an ML model we have developed during the hackathon which makes predictions on the price of the crop which is chosen.
 
 ## Algorithm
 ### Parameters
@@ -20,6 +23,13 @@ We model the crop distribution problem over the years in a 3D space consisting o
 ![AqriCult Topology](./img/AqricultTopology.png)
 
 On the image above a model for two plants, distributed on two fields over three years time period is provided as an example. The cost fucntion modelling the problem is depicted on the second image.
+where:
+- $y_j$ - yield constant of field $j$;
+- $A_j$ - area of field $j$;
+- $P_{ik}$ - profit of plant $i$ at time $k$;
+- $N_{f_i}$ - plant impact of $i$;
+- $f_{r_i}$ - fertilizer requirement of $i$ * fertilizer cost;
+- and $\xi$ - environment coefficient.
 
 ![Cost funciton](./img/eq.png)
 
